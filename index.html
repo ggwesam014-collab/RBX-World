@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBX World - Earn Free Robux</title>
+    <link rel="icon" type="image/png" href="https://images.rbxcdn.com/8ed6b064a6703976b9fa8b0ac4ac060f.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Earn free Robux by watching ads and spinning the lucky wheel">
+    <!-- إعلانات مجانية - Adsterra -->
+    <script type='text/javascript' src='//pl25462898.profitablecpmrate.com/d6/67/60/d667604d1b6a9a69f86c24f40f68cdc5.js'></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="rbx-loader">
+            <img src="https://images.rbxcdn.com/8ed6b064a6703976b9fa8b0ac4ac060f.png" alt="RBX Logo">
+        </div>
+        <p>Loading RBX World...</p>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen">
+        <div class="login-card">
+            <img src="https://images.rbxcdn.com/8ed6b064a6703976b9fa8b0ac4ac060f.png" alt="RBX Logo" class="rbx-logo">
+            <h1>RBX World</h1>
+            <p class="subtitle">Enter your Roblox username to continue</p>
+            <div class="input-group">
+                <input type="text" id="roblox-username" placeholder="Roblox Username" value="BloxyMan1275">
+                <button onclick="checkUsername()" class="btn-primary">Continue</button>
+            </div>
+            <p class="error-message" id="login-error" style="display: none;"></p>
+            <p class="small-text">By continuing, you agree to our Terms of Service</p>
+        </div>
+    </div>
+
+    <!-- Verification Screen -->
+    <div id="verification-screen" class="screen" style="display: none;">
+        <div class="verification-card">
+            <h2>Is this you?</h2>
+            <div class="user-preview">
+                <img id="verify-avatar" src="" alt="Roblox Avatar">
+                <div class="user-info">
+                    <h3 id="verify-displayname"></h3>
+                    <p id="verify-username"></p>
+                </div>
+            </div>
+            <div class="verification-buttons">
+                <button onclick="confirmIdentity(true)" class="btn-yes">Yes, that's me</button>
+                <button onclick="confirmIdentity(false)" class="btn-no">No, try again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="main-app" class="app-container" style="display: none;">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://images.rbxcdn.com/8ed6b064a6703976b9fa8b0ac4ac060f.png" alt="RBX Logo" class="sidebar-logo">
+                <h2>RBX World</h2>
+            </div>
+            
+            <!-- User Profile in Sidebar -->
+            <div class="sidebar-profile">
+                <img id="sidebar-avatar" src="" alt="Profile">
+                <div class="profile-info">
+                    <span id="sidebar-username">Username</span>
+                    <span class="profile-stats">💰 <span id="sidebar-points">1000</span> points</span>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" onclick="switchTab('wheel', this)">
+                    <span class="nav-icon">🎡</span>
+                    <span class="nav-text">Lucky Wheel 🍀</span>
+                </button>
+                
+                <button class="nav-btn" onclick="switchTab('transformation', this)">
+                    <span class="nav-icon">🪙</span>
+                    <span class="nav-text">Transformation</span>
+                </button>
+                
+                <button class="nav-btn disabled" onclick="showComingSoon()">
+                    <span class="nav-icon">🔜</span>
+                    <span class="nav-text">Coming Soon</span>
+                </button>
+                
+                <button class="nav-btn disabled" onclick="showComingSoon()">
+                    <span class="nav-icon">🔜</span>
+                    <span class="nav-text">Coming Soon</span>
+                </button>
+                
+                <button class="nav-btn disabled" onclick="showComingSoon()">
+                    <span class="nav-icon">🔜</span>
+                    <span class="nav-text">Coming Soon</span>
+                </button>
+            </nav>
+
+            <!-- إعلان Adsterra في الشريط الجانبي -->
+            <div class="sidebar-ad">
+                <iframe src="//marathon-male-trifle.com/50c2b920e2447ecdd963e7be50db8af9/invoke.html" scrolling='no' frameborder='0' style='width:250px; height:250px;' allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="page-title">
+                    <h1 id="current-page-title">Lucky Wheel 🍀</h1>
+                </div>
+                <div class="top-bar-actions">
+                    <span class="points-badge">💰 <span id="top-points">1000</span></span>
+                    <button onclick="showWithdrawModal()" class="withdraw-btn">Withdraw</button>
+                </div>
+            </div>
+
+            <!-- إعلان Adsterra علوي -->
+            <div class="ad-container">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '50c2b920e2447ecdd963e7be50db8af9',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//marathon-male-trifle.com/50c2b920e2447ecdd963e7be50db8af9/invoke.js"></script>
+            </div>
+
+            <!-- Lucky Wheel Tab -->
+            <div id="wheel-tab" class="tab-content active">
+                <div class="wheel-container">
+                    <h2>Spin the Lucky Wheel</h2>
+                    <p class="ads-counter">📺 <span id="ads-count">0</span>/2 ads watched</p>
+                    
+                    <!-- Wheel Canvas -->
+                    <div class="wheel-wrapper">
+                        <canvas id="wheelCanvas" width="350" height="350"></canvas>
+                        <div class="wheel-pointer">▼</div>
+                    </div>
+
+                    <!-- Single Button to Watch Ads and Spin -->
+                    <button id="watch-and-spin-btn" class="btn-spin" onclick="startAdSequence()">
+                        🎬 Watch 2 Ads & Spin
+                    </button>
+
+                    <!-- إعلان Adsterra منبثق (يظهر عند الحاجة) -->
+                    <div id="popad-container" style="display: none;"></div>
+
+                    <!-- Prize History -->
+                    <div class="history-section">
+                        <h3>Recent Prizes</h3>
+                        <div id="prize-history" class="history-list">
+                            <!-- History items will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transformation Tab -->
+            <div id="transformation-tab" class="tab-content">
+                <div class="transformation-container">
+                    <h2>Transform Points to Robux</h2>
+                    <div class="conversion-box">
+                        <div class="conversion-rate">
+                            <span>100 Points = 1 Robux</span>
+                        </div>
+                        <div class="current-balance">
+                            Your balance: <strong><span id="transform-points">1000</span> points</strong>
+                            <p class="small-text">= <span id="robux-equivalent">10</span> Robux</p>
+                        </div>
+                        
+                        <div class="withdraw-info">
+                            <h3>Withdrawal Requirements</h3>
+                            <p>• Minimum withdrawal: 700 points (7 Robux)</p>
+                            <p>• Maximum withdrawal: 50,000 points per day</p>
+                            <p>• Processing time: 24-48 hours</p>
+                        </div>
+                    </div>
+
+                    <!-- Transaction History -->
+                    <div class="transaction-history">
+                        <h3>Transaction History</h3>
+                        <div id="transaction-list" class="transaction-list">
+                            <!-- Transactions will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coming Soon Tab -->
+            <div id="coming-soon-tab" class="tab-content">
+                <div class="coming-soon">
+                    <h2>🚀 Coming Soon</h2>
+                    <p>This feature is under development</p>
+                    <div class="coming-soon-animation">
+                        <div class="rbx-block"></div>
+                        <div class="rbx-block"></div>
+                        <div class="rbx-block"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Withdraw Modal -->
+    <div id="withdraw-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>💎 Withdraw Points</h2>
+            <p>Current balance: <span id="modal-points">1000</span> points</p>
+            <p class="rate-info">100 points = 1 Robux (Minimum 700 points)</p>
+            
+            <div class="input-group">
+                <label>Points to withdraw:</label>
+                <input type="number" id="withdraw-amount" placeholder="Enter points" min="700" step="100">
+            </div>
+            
+            <div class="input-group">
+                <label>Roblox Username:</label>
+                <input type="text" id="roblox-user" placeholder="Enter Roblox username">
+            </div>
+            
+            <button onclick="withdrawPoints()" class="btn-primary">Confirm Withdrawal</button>
+            <p class="note">You will receive Robux within 24-48 hours</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
